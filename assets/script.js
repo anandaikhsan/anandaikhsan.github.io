@@ -114,6 +114,12 @@ $(document).ready(function(){
         helpOutput += "<td>Show all information</td>"
         helpOutput += "</tr>";
 
+
+        helpOutput += "<tr>";
+        helpOutput += "<td>game</td>"
+        helpOutput += "<td>play a game!</td>"
+        helpOutput += "</tr>";
+
         helpOutput += "<tr>";
         helpOutput += "<td>clear</td>"
         helpOutput += "<td>clear the console</td>"
