@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>HTML5 Pacman</title>
+    
+    <style type="text/css">
+      @font-face {
+	    font-family: 'BDCartoonShoutRegular';
+        src: url('assets/BD_Cartoon_Shout-webfont.ttf') format('truetype');
+	    font-weight: normal;
+	    font-style: normal;
+      }
+      #pacman {
+        height:450px;
+        width:342px;
+        margin:20px auto;
+      }
+      #shim { 
+        font-family: BDCartoonShoutRegular; 
+        position:absolute;
+        visibility:hidden
+      }
+      h1 { font-family: BDCartoonShoutRegular; text-align:center; }
+      body { width:342px; margin:0px auto; font-family:sans-serif; }
+
+      .credit, .credit a{
+        color: #f5f5f5;
+      }
+
+  .control{
+      position: fixed;
+      display: flex;
+      bottom: 0;
+      left: 50%;
+      width: 320px;
+      margin-left: -160px;
+      margin-bottom: 10px;
+  }
+
+  .control *{
+      flex-grow: 1;
+  }
+
+  .control button{
+      background: none;
+      border: 1px solid #f5f5f5;
+      color: #f5f5f5;
+  }
+    </style>
+
+</head>
+
+<body>
+  <p style="text-align: center;" class="credit">Game Credit <a href="http://arandomurl.com/">Github</a></p>
+
+
+  <div class="control">
+    <button id="startGame">START</button>
+    <button id="leftArrow">&#8592;</button>
+    <button id="rightArrow">&#8594;</button>
+    <button id="topArrow">&#8593;</button>
+    <button id="bottomArrow">&#8595;</button>
+</div>
+  <div id="pacman"></div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function simulateKeyPress(character) {
+          $(document).focus();
+
+          let charCode = character.charCodeAt(0);
+
+          switch(character){
+            case "ArrowLeft":
+              charCode = 37;
+              break;
+            case "ArrowRight":
+              charCode = 39;
+              break;
+            case "ArrowUp":
+              charCode = 38;
+              break;
+            case "ArrowDown":
+              charCode = 40;
+              break;
+            default:
+          }
+
+          jQuery.event.trigger({ type : 'keydown', which : charCode, keyCode : charCode });
+          jQuery.event.trigger({ type : 'keypress', which : charCode, keyCode : charCode });
+        }
+
+        
+
+        $("#startGame").click(function(){
+          simulateKeyPress("N");
+        });
+
+        $("#leftArrow").click(function(){
+          simulateKeyPress("ArrowLeft")
+        })
+
+        $("#rightArrow").click(function(){
+          simulateKeyPress("ArrowRight")
+        })
+        $("#topArrow").click(function(){
+          simulateKeyPress("ArrowUp")
+        })
+        $("#bottomArrow").click(function(){
+          simulateKeyPress("ArrowDown")
+        })
+
+        $(document).keydown(function(e){
+          console.log(e.which);
+        })
+  </script>
+  <script src="assets/pacman.js"></script>
+  <script src="assets/modernizr-1.5.min.js"></script>
+
+  <script>
+
+    var el = document.getElementById("pacman");
+
+    if (Modernizr.canvas && Modernizr.localstorage && 
+        Modernizr.audio && (Modernizr.audio.ogg || Modernizr.audio.mp3)) {
+      window.setTimeout(function () { PACMAN.init(el, "./"); }, 0);
+    } else { 
+      el.innerHTML = "Sorry, needs a decent browser<br /><small>" + 
+        "(firefox 3.6+, Chrome 4+, Opera 10+ and Safari 4+)</small>";
+    }
+  </script>
+</body>
+</html>
