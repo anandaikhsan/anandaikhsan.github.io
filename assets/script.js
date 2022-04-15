@@ -7,7 +7,8 @@ $(document).ready(function(){
 
     $("#console-container").on('keyup', "#user-input",function (e) {
         if (e.key === 'Enter' || e.keyCode === 13) {
-            switch($(this).val()){
+            const value = $(this).val();
+            switch(value){
                 case 'help':
                     printHelp();
                     break;
@@ -21,7 +22,15 @@ $(document).ready(function(){
                     launchGame();
                     break;
                 default:
-                    searchForCommand($(this).val());
+                    if(value.substring(0, value.indexOf(' ')).toLowerCase() === 'argument'){
+                        printArgument(value, (value) => {
+                            // Implement how to return the argument in an array
+                            // this example for one argument, every string after the first space will be the argument
+                            return [value.substring(value.indexOf(' ') + 1)];
+                        });
+                    }else{
+                        searchForCommand(value);
+                    }
             }
         }
     });
@@ -50,6 +59,12 @@ $(document).ready(function(){
                 text + 
             '</div>' +
         '</div>');
+    }
+
+    function printArgument(rawInput, getArguments){
+        
+        const argument = getArguments(rawInput);
+        prompt("<p>Your argument is "+argument+"</p>");
     }
 
     function prompt(text){
