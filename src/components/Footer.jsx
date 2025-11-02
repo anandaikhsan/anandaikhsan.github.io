@@ -37,10 +37,6 @@ const Footer = () => {
                   <Linkedin size={20} />
                   <span className="text-body">LinkedIn</span>
                 </a>
-                <a href={social.twitter} className="footer-icon-link" target="_blank" rel="noopener noreferrer">
-                  <Twitter size={20} />
-                  <span className="text-body">Twitter</span>
-                </a>
               </div>
             </div>
           </div>

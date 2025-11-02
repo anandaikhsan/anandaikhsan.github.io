@@ -4,7 +4,7 @@ import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
 
 const Hero = () => {
   const { personal } = mockData;
-
+  const {social} = mockData;
   return (
     <section className="hero-section" id="hero">
       <div className="grid-background"></div>
@@ -16,14 +16,14 @@ const Hero = () => {
           
           <div className="hero-actions">
             <a href="#contact" className="btn-accent">Get in Touch</a>
-            <a href="#projects" className="btn-primary">View Projects</a>
+            <a href="#portfolio" className="btn-primary">View Projects</a>
           </div>
 
           <div className="hero-links">
-            <a href={personal.social?.github || '#'} className="hero-link" target="_blank" rel="noopener noreferrer">
+            <a href={social.github || '#'} className="hero-link" target="_blank" rel="noopener noreferrer">
               <Github size={20} />
             </a>
-            <a href={personal.social?.linkedin || '#'} className="hero-link" target="_blank" rel="noopener noreferrer">
+            <a href={social.linkedin || '#'} className="hero-link" target="_blank" rel="noopener noreferrer">
               <Linkedin size={20} />
             </a>
             <a href={`mailto:${personal.email}`} className="hero-link">

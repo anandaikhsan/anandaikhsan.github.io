@@ -53,13 +53,7 @@ const Portfolio = () => {
             <div key={index} className="skill-card">
               <div className="skill-header">
                 <span className="text-body">{skill.name}</span>
-                <span className="label-small">{skill.level}%</span>
-              </div>
-              <div className="skill-bar">
-                <div 
-                  className="skill-progress" 
-                  style={{ width: `${skill.level}%` }}
-                ></div>
+                {/* <span className="label-small">{skill.level}%</span> */}
               </div>
             </div>
           ))}

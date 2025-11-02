@@ -143,9 +143,8 @@ export const mockData = {
 
   // Social Links
   social: {
-    github: "https://github.com/alexmorgan",
-    linkedin: "https://linkedin.com/in/alexmorgan",
-    twitter: "https://twitter.com/alexmorgan",
-    email: "alex.morgan@example.com"
+    github: "https://github.com/anandaikhsan",
+    linkedin: "https://www.linkedin.com/in/ananda-ikhsan/",
+    email: "amikhsan99@gmail.com"
   }
 };
